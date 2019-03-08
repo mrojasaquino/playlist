@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http'
+import { map } from 'rxjs/operators'
 
 @Injectable({
   providedIn: 'root'
@@ -8,8 +10,18 @@ import { Injectable } from '@angular/core';
 export class SongService {
 
   public songs: Array<object> = null;
+  private API_KEY='6a5f61f6e13b1ad4dab74efb4346c53f'
 
-  constructor() { }
+  constructor(private http : HttpClient) { }
+
+  searchSong(song) {
+    const API_URL = `http://ws.audioscrobbler.com/2.0/?method=track.search&track=${song}&api_key=${this.API_KEY}&format=json`;
+
+    return this.http.get(API_URL)
+    .pipe(
+      map(response => response['results'].trackmatches.track)
+    ).toPromise();
+  }
 
   getSongs() {
     return this.songs = [{
@@ -30,4 +42,5 @@ export class SongService {
       url: 'https://www.last.fm/music/Jean+Michel+Jarre/_/Zoolook'
     }];
   }
-}
+
+  }
