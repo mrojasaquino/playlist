@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SongsComponent } from './songs/songs.component';
+import { SongService } from './songs/song.service';
 
 @NgModule({
   declarations: [
