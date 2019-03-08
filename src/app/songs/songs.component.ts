@@ -21,6 +21,10 @@ export class SongsComponent implements OnInit {
       artist: 'Kraftwerk',
       name: 'Computer World',
       url: 'https://www.last.fm/music/Kraftwerk/_/Computer+World'
+    },{
+      artist: 'Mike Oldfield',
+      name: 'Crisis',
+      url: 'https://www.last.fm/music/Mike+Oldfield/_/Crisis'
     }];
   }
 
