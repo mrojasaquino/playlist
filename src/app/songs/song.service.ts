@@ -3,6 +3,8 @@ import { Injectable } from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
+
+//ng-playlist
 export class SongService {
 
   public songs: Array<object> = null;
