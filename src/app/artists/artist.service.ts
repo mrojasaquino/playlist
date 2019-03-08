@@ -12,7 +12,7 @@ export class ArtistService {
   constructor(private http: HttpClient) { }
 
   searchArtist(artist) {
-    const URL = `http://ws.audioscrobbler.com/2.0/?method=artist.search&artist=${artist}&api_key=${this.API_KEY}&format=json`
+    const URL = `http://ws.audioscrobbler.com/2.0/?method=artist.search&artist=${artist}&api_key=${this.API_KEY}&format=json`;
 
     return this.http
       .get<Response>(URL)
@@ -22,5 +22,13 @@ export class ArtistService {
           return response['results'].artistmatches.artist;
         })
       ).toPromise();
+  }
+
+  getDetails(artist) {
+    const URL = `http://ws.audioscrobbler.com/2.0/?method=artist.getInfo&artist=${artist}&api_key=${this.API_KEY}&format=json`;
+
+    return this.http
+      .get(URL)
+      .toPromise();
   }
 }

@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ArtistService } from './artist.service';
 
+type Artist = {
+  name: string,
+  url: string
+}
+
+
 @Component({
   selector: 'app-artists',
   templateUrl: './artists.component.html',
