@@ -2,11 +2,12 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { map } from 'rxjs/operators'
 
+//esta anotacion define que es un servicio
 @Injectable({
   providedIn: 'root'
 })
 
-//ng-playlist
+//nombre de mi aplicación en Last.fm ng-playlist 
 export class SongService {
 
   public songs: Array<object> = null;
