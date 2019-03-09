@@ -3,12 +3,18 @@ import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 
+type Artist = {
+  name: string,
+  url: string;
+}
+
+
 @Injectable({
   providedIn: 'root'
 })
 export class ArtistService {
   private API_KEY = environment.API_KEY;
-  private API_URL = environment.API_URL
+  private API_URL = environment.API_URL;
 
   constructor(private http: HttpClient) { }
 
