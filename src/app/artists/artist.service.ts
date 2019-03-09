@@ -1,18 +1,19 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { map } from 'rxjs/operators';
-
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ArtistService {
-  private API_KEY='6a5f61f6e13b1ad4dab74efb4346c53f'
+  private API_KEY = environment.API_KEY;
+  private API_URL = environment.API_URL
 
   constructor(private http: HttpClient) { }
 
   searchArtist(artist) {
-    const URL = `http://ws.audioscrobbler.com/2.0/?method=artist.search&artist=${artist}&api_key=${this.API_KEY}&format=json`;
+    const URL = `${this.API_URL}method=artist.search&artist=${artist}&api_key=${this.API_KEY}&format=json`;
 
     return this.http
       .get<Response>(URL)
@@ -25,7 +26,7 @@ export class ArtistService {
   }
 
   getDetails(artist) {
-    const URL = `http://ws.audioscrobbler.com/2.0/?method=artist.getInfo&artist=${artist}&api_key=${this.API_KEY}&format=json`;
+    const URL = `${this.API_URL}method=artist.getInfo&artist=${artist}&api_key=${this.API_KEY}&format=json`;
 
     return this.http
       .get(URL)

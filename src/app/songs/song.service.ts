@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { map } from 'rxjs/operators'
+import { environment } from '../../environments/environment';
 
 //esta anotacion define que es un servicio
 @Injectable({
@@ -11,12 +12,13 @@ import { map } from 'rxjs/operators'
 export class SongService {
 
   public songs: Array<object> = null;
-  private API_KEY='6a5f61f6e13b1ad4dab74efb4346c53f'
+  private API_KEY = environment.API_KEY;
+  private API_URL = environment.API_URL;
 
   constructor(private http : HttpClient) { }
 
   searchSong(song) {
-    const API_URL = `http://ws.audioscrobbler.com/2.0/?method=track.search&track=${song}&api_key=${this.API_KEY}&format=json`;
+    const API_URL = `${environment.API_URL}method=track.search&track=${song}&api_key=${this.API_KEY}&format=json`;
 
     return this.http.get(API_URL)
     .pipe(
