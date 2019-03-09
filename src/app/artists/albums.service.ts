@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http'
 import { map } from 'rxjs/operators'
+import { environment } from '../../environments/environment';
 
 type Response = {
   topalbums: {
@@ -18,13 +19,14 @@ type Album = {
 export class AlbumsService {
 
   public albums: Array<object> = null;
-  private API_KEY='6a5f61f6e13b1ad4dab74efb4346c53f'
+  private API_KEY = environment.API_KEY;
+  private API_URL = environment.API_URL;
 
   constructor(private http: HttpClient) { }
 
 
   getAlbums(artist) {
-    const API_URL = `http://ws.audioscrobbler.com/2.0/?method=artist.gettopalbums&artist=${artist}&api_key=${this.API_KEY}&format=json`;
+    const API_URL = `${this.API_URL}method=artist.gettopalbums&artist=${artist}&api_key=${this.API_KEY}&format=json`;
 
     return this.http
       .get(API_URL)
